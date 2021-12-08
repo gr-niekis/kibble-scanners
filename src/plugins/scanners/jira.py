@@ -335,8 +335,9 @@ def scan(KibbleBit, source):
                  'running': False,
                  'good': False
              }
-             KibbleBit.updateSource(source)
-             return
+             
+#             KibbleBit.updateSource(source)
+#             return
         if 'issues' in js and len(js['issues']) == 1:
             key = js['issues'][0]['key']
             m = re.search(r"-(\d+)$", key)

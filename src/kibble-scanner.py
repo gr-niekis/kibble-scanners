@@ -119,7 +119,7 @@ def main():
     # Load config yaml
     if args.config:
         CONFIG_FILE = args.config
-    config = yaml.load(open(CONFIG_FILE))
+    config = yaml.safe_load(open(CONFIG_FILE))
     pprint("Loaded YAML config from %s" % CONFIG_FILE)
     
     # Which broker type do we use here?
@@ -164,8 +164,8 @@ def main():
             # Start up some threads equal to number of cores on the box,
             # but no more than 4. We don't want an IOWait nightmare.
             threads = []
-            core_count = min((4, int( multiprocessing.cpu_count() )))
-            for i in range(0, core_count):
+            core_count = min((16, int( multiprocessing.cpu_count() )))
+            for i in range(0, 2):
                 sThread = scanThread(broker, org, i+1, args.type, args.exclude)
                 sThread.start()
                 threads.append(sThread)

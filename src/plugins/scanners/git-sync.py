@@ -39,7 +39,7 @@ def scan(KibbleBit, source):
     
     # Get some vars, construct a data path for the repo
     path = source['sourceID']
-    url = source['sourceURL']
+    url = source['sourceURL'].replace("https://github.com/", "git@github.com:")
     rootpath = "%s/%s/git" % (KibbleBit.config['scanner']['scratchdir'], source['organisation'])
     
     # If the root path does not exist, try to make it recursively.
